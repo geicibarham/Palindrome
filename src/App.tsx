@@ -1,12 +1,15 @@
 import React from 'react';
-
-import './App.css';
-
+import WordForm from './newWord';
+import classes from './App.module.css';
+import Nav from './nav';
 function App() {
   return (
-<div>
-  <h1>test</h1>
-    </div>
+<>
+<div className={classes.App}>
+  <Nav />
+  <WordForm />
+  </div>
+  </>
   );
 }
 
