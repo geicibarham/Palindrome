@@ -1,39 +1,68 @@
-import classes from "./form.module.css";
+import "./form.css";
 import React, { useState, useRef } from "react";
 
 const WordForm = () => {
   const [word, setWord] = useState("");
-
+  const [palindrome, setPalindrome] = useState(false);
+  const [notpalindrome, setnotPalindrome] = useState(false);
+  const [error, setError] = useState("");
+  const [isSubmited, setIssubmited] = useState(false);
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
- 
     setWord(e.target.value);
   };
   const addWordHandler = (event: React.FormEvent) => {
     event.preventDefault();
-    console.log(word);
-    setWord("");
+    if (!word) {
+      setError("Word can't be empty!");
+    } else {
+      setError("");
+      isPalindrome(word);
+        
+      setIssubmited(true)
+    }
   };
+
+  const isPalindrome = (word: string) => {
+    let separated = word.split("");
+    let reverse = separated.reverse().join("");
+    if (reverse.toLowerCase() === word.toLowerCase()) {
+      setPalindrome(true);
+    } else {
+      setnotPalindrome(true);
+    }
+  };
+
   return (
     <>
-      <section className={classes.form__wrapper}>
-        <div id={classes.form__container}>
-          <form onSubmit={addWordHandler} className={classes.form}>
-            <h4>Enter the word</h4>
-            <label htmlFor="word">
-              Your Word
-              <input
-                value={word}
-                onChange={changeHandler}
-                name="word"
-                placeholder="Your Word"
-                type="text"
-                id="word"
-              />
-            </label>
-            <p style={{ color: "white" }}> {word}</p>
-          </form>
+      <section className="form__wrapper"
+      >
 
-          <button onClick={addWordHandler} type="submit" className={classes.button__submit}>
+     
+        <div 
+        className={`${!isSubmited ? 'form__container' :
+        `${palindrome ? 'palindrome' : 'notpalindrome'}`
+        }`}
+       >
+          {palindrome && `${word} is a palindrome!`}
+          {notpalindrome && `${word} is not a palindrome!`}
+          <form onSubmit={addWordHandler} className="form">
+            <h4>Enter the word</h4>
+
+            <input
+              value={word}
+              onChange={changeHandler}
+              name="word"
+              placeholder="Your Word"
+              type="text"
+              id="word"
+            />
+          </form>
+          <p style={{ color: "red" }}>{error}</p>
+          <button
+            onClick={addWordHandler}
+            type="submit"
+            className="button__submit"
+          >
             Submit
           </button>
         </div>
