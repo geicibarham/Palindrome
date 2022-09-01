@@ -17,8 +17,8 @@ const WordForm = () => {
     } else {
       setError("");
       isPalindrome(word);
-        
-      setIssubmited(true)
+
+      setIssubmited(true);
     }
   };
 
@@ -32,23 +32,30 @@ const WordForm = () => {
     }
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
+    if (event.key === "Backspace") {
+      setIssubmited(false);
+      setPalindrome(false)
+      setnotPalindrome(false)
+    }
+  };
   return (
     <>
-      <section className="form__wrapper"
-      >
-
-     
-        <div 
-        className={`${!isSubmited ? 'form__container' :
-        `${palindrome ? 'palindrome' : 'notpalindrome'}`
-        }`}
-       >
+      <section className="form__wrapper">
+        <div
+          className={`${
+            !isSubmited
+              ? "form__container"
+              : `${palindrome ? "palindrome" : "notpalindrome"}`
+          }`}
+        >
           {palindrome && `${word} is a palindrome!`}
           {notpalindrome && `${word} is not a palindrome!`}
           <form onSubmit={addWordHandler} className="form">
             <h4>Enter the word</h4>
 
             <input
+              onKeyDown={handleKeyDown}
               value={word}
               onChange={changeHandler}
               name="word"
