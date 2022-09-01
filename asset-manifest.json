@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/Palindrome/static/css/main.ff53970e.css",
-    "main.js": "/Palindrome/static/js/main.0ee94192.js",
+    "main.js": "/Palindrome/static/js/main.7d599545.js",
     "static/js/787.73a8bc35.chunk.js": "/Palindrome/static/js/787.73a8bc35.chunk.js",
     "static/media/word-background.jpg": "/Palindrome/static/media/word-background.a812303b661ff313448b.jpg",
     "index.html": "/Palindrome/index.html",
     "main.ff53970e.css.map": "/Palindrome/static/css/main.ff53970e.css.map",
-    "main.0ee94192.js.map": "/Palindrome/static/js/main.0ee94192.js.map",
+    "main.7d599545.js.map": "/Palindrome/static/js/main.7d599545.js.map",
     "787.73a8bc35.chunk.js.map": "/Palindrome/static/js/787.73a8bc35.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ff53970e.css",
-    "static/js/main.0ee94192.js"
+    "static/js/main.7d599545.js"
   ]
 }
